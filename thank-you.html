@@ -22,9 +22,35 @@
   <p class="sub">Your receipt is already in your inbox from Stripe. The only thing I need from you is below — the moment it lands, your 48-hour clock starts.</p>
 
   <div class="card">
-    <!-- TALLY: replace with your post-purchase intake form embed URL -->
-    <iframe class="embed" src="TALLY_FORM_URL_INTAKE" title="Audit intake form" loading="lazy"></iframe>
-    <p class="small" style="margin-bottom:0">Form not loading? Reply to your receipt email with your clinic name, city, website, main services and top three local competitors.</p>
+    <form class="st" id="f" novalidate>
+      <label for="clinic">Clinic name</label>
+      <input id="clinic" type="text" autocomplete="organization">
+
+      <div class="row2">
+        <div>
+          <label for="city">City &amp; state</label>
+          <input id="city" type="text" autocomplete="address-level2">
+        </div>
+        <div>
+          <label for="site">Website</label>
+          <input id="site" type="text" autocomplete="url">
+        </div>
+      </div>
+
+      <label for="services">Your main treatments (the ones you want patients to find you for)</label>
+      <input id="services" type="text" placeholder="Botox, filler, laser hair removal">
+
+      <label for="rivals">Top three local competitors, if you know them</label>
+      <textarea id="rivals" placeholder="One per line &mdash; or leave blank and I'll find them"></textarea>
+
+      <label for="email">Best email for your report</label>
+      <input id="email" type="email" autocomplete="email">
+
+      <button class="btn block" type="submit">Send my details &mdash; start my 48 hours</button>
+      <p class="err" id="e">Please add your clinic name and city so I can start.</p>
+      <p class="small" style="margin-bottom:0">This opens your own email app with everything filled in &mdash; just press send.</p>
+    </form>
+    <p class="small" style="margin-bottom:0">Easier to reply to your Stripe receipt instead? That works too &mdash; just include your clinic name, city, website and main treatments.</p>
   </div>
 
   <h2>What happens next</h2>
@@ -49,6 +75,24 @@
     <p class="small">CiteReady is an independent analysis service and is not affiliated with OpenAI, Google, Microsoft or Perplexity. © <span id="y">2026</span> Jason Berry.</p>
   </div>
 </footer>
+
+<script>
+(function(){
+  var f=document.getElementById('f'),e=document.getElementById('e');
+  function v(id){var el=document.getElementById(id);return el?(el.value||'').trim():''}
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var req=['clinic','city'];
+    for(var i=0;i<req.length;i++){
+      if(!v(req[i])){e.style.display='block';document.getElementById(req[i]).focus();return}
+    }
+    e.style.display='none';
+    var body=['Clinic: '+v('clinic'),'City/State: '+v('city'),'Website: '+v('site'),'Main treatments: '+v('services'),'Competitors: '+v('rivals'),'Report email: '+v('email'),'','Payment sent via Stripe — please start my AI Visibility Audit.'].join('\r\n');
+    var subj='Audit intake — '+v('clinic');
+    window.location.href='mailto:citeready.audit@gmail.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+  });
+})();
+</script>
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
 </html>

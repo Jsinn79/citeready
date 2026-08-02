@@ -29,9 +29,37 @@
   </ul>
 
   <div class="card">
-    <!-- TALLY: replace the src below with your Tally form's embed URL (Tally → Share → Embed) -->
-    <iframe class="embed" src="TALLY_FORM_URL_MINI_CHECK" title="Free AI Visibility Mini-Check request form" loading="lazy"></iframe>
-    <p class="small" style="margin-bottom:0">Form not loading? Email me your clinic name, city and website at <a href="mailto:citeready.audit@gmail.com">citeready.audit@gmail.com</a> and I'll run it manually.</p>
+    <form class="st" id="f" novalidate>
+      <label for="clinic">Clinic name</label>
+      <input id="clinic" type="text" autocomplete="organization" placeholder="e.g. Omega Med Spa">
+
+      <div class="row2">
+        <div>
+          <label for="city">City &amp; state</label>
+          <input id="city" type="text" autocomplete="address-level2" placeholder="Fayetteville, GA">
+        </div>
+        <div>
+          <label for="site">Website</label>
+          <input id="site" type="text" autocomplete="url" placeholder="yourclinic.com">
+        </div>
+      </div>
+
+      <div class="row2">
+        <div>
+          <label for="who">Your name</label>
+          <input id="who" type="text" autocomplete="name" placeholder="First name is fine">
+        </div>
+        <div>
+          <label for="email">Where should I send the result?</label>
+          <input id="email" type="email" autocomplete="email" placeholder="you@yourclinic.com">
+        </div>
+      </div>
+
+      <button class="btn block" type="submit">Send my free 3-prompt check</button>
+      <p class="err" id="e">Please add your clinic name, city and email so I know what to run.</p>
+      <p class="small" style="margin-bottom:0">This opens your own email app with every answer filled in &mdash; just press send. Nothing is stored on this website.</p>
+    </form>
+    <p class="small" style="margin-bottom:0">Rather write it yourself? Email your clinic name, city and website to <a href="mailto:citeready.audit@gmail.com">citeready.audit@gmail.com</a>.</p>
   </div>
 
   <h2>Why I give this away</h2>
@@ -53,6 +81,24 @@
     <p class="small">CiteReady is an independent analysis service and is not affiliated with OpenAI, Google, Microsoft or Perplexity. © <span id="y">2026</span> Jason Berry.</p>
   </div>
 </footer>
+
+<script>
+(function(){
+  var f=document.getElementById('f'),e=document.getElementById('e');
+  function v(id){var el=document.getElementById(id);return el?(el.value||'').trim():''}
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var req=['clinic','city','email'];
+    for(var i=0;i<req.length;i++){
+      if(!v(req[i])){e.style.display='block';document.getElementById(req[i]).focus();return}
+    }
+    e.style.display='none';
+    var body=['Clinic: '+v('clinic'),'City/State: '+v('city'),'Website: '+v('site'),'Name: '+v('who'),'Reply to: '+v('email'),'','Please run the free 3-prompt AI visibility check for my clinic.'].join('\r\n');
+    var subj='Free 3-prompt check — '+v('clinic');
+    window.location.href='mailto:citeready.audit@gmail.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+  });
+})();
+</script>
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
 </html>
