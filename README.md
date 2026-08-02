@@ -15,7 +15,7 @@ ALL-CAPS placeholders. Nothing else needs touching.
 ## Find-and-replace, every file
 | Placeholder | Replace with |
 |---|---|
-| `kulacore79@gmail.com` | your real support email |
+| `citeready.audit@gmail.com` | your real support email |
 | `Jason Berry` / `Jason Berry` | your name |
 | `https://buy.stripe.com/6oU5kD9pAbVl7vx3oN8Ra1a` | Stripe Payment Link for the $147 founding audit |
 | `https://buy.stripe.com/9B65kD59kgbB9DFe3r8Ra1b` | Stripe Payment Link for the $197 audit |
