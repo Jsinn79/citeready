@@ -15,15 +15,15 @@ ALL-CAPS placeholders. Nothing else needs touching.
 ## Find-and-replace, every file
 | Placeholder | Replace with |
 |---|---|
-| `YOUR_EMAIL@gmail.com` | your real support email |
-| `[Your Name]` / `[Your Legal Name]` | your name |
-| `STRIPE_LINK_FOUNDING` | Stripe Payment Link for the $147 founding audit |
-| `STRIPE_LINK_AUDIT` | Stripe Payment Link for the $197 audit |
+| `kulacore79@gmail.com` | your real support email |
+| `Jason Berry` / `Jason Berry` | your name |
+| `https://buy.stripe.com/6oU5kD9pAbVl7vx3oN8Ra1a` | Stripe Payment Link for the $147 founding audit |
+| `https://buy.stripe.com/9B65kD59kgbB9DFe3r8Ra1b` | Stripe Payment Link for the $197 audit |
 | `TALLY_FORM_URL_MINI_CHECK` | Tally embed URL for the free-check form |
 | `TALLY_FORM_URL_INTAKE` | Tally embed URL for the post-purchase intake form |
 | `SAMPLE_AUDIT_PDF_EMBED_URL` | Google Drive `/preview` link for your redacted sample audit |
 | `SAMPLE_AUDIT_PDF_DOWNLOAD_URL` | Drive download link for the same PDF |
-| `[DATE]`, `[City, State, Country]`, `[Your State/Country]`, `[Your County/State]` | in `legal.html` |
+| `August 2, 2026`, `Fayetteville, Georgia, United States`, `the State of Georgia, USA`, `Fayette County, Georgia` | in `legal.html` |
 
 ## Real content to add (do not launch without these)
 1. **Hero screenshot** — replace the striped placeholder in `index.html` with a real screenshot of an
